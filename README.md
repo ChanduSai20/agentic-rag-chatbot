@@ -13,20 +13,20 @@ A conversational AI assistant built with **LangGraph** that combines agentic rea
 ## Architecture
 
 User Question (Streamlit UI)
-│
-▼
-LangGraph Agent (Gemini)
-│
-├── Answers directly, or
-│
-▼
-Retrieval Tool ── Chroma Vector Store ── Gemini Embeddings
-│
-▼
-Response streamed back to UI
-│
-▼
-Conversation state saved to SQLite (per thread_id)
+        │
+        ▼
+  LangGraph Agent (Gemini)
+        │
+        ├── Answers directly, or
+        │
+        ▼
+  Retrieval Tool ── Chroma Vector Store ── Gemini Embeddings
+        │
+        ▼
+  Response streamed back to UI
+        │
+        ▼
+  Conversation state saved to SQLite (per thread_id)
 
 
 
@@ -42,4 +42,4 @@ Conversation state saved to SQLite (per thread_id)
 | Conversation persistence | LangGraph `SqliteSaver` |
 | Frontend | Streamlit |
 
-## Project Structure
+
