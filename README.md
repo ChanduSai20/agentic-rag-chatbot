@@ -12,21 +12,17 @@ A conversational AI assistant built with **LangGraph** that combines agentic rea
 
 ## Architecture
 
-User Question (Streamlit UI)
-        │
-        ▼
-  LangGraph Agent (Gemini)
-        │
-        ├── Answers directly, or
-        │
-        ▼
-  Retrieval Tool ── Chroma Vector Store ── Gemini Embeddings
-        │
-        ▼
-  Response streamed back to UI
-        │
-        ▼
-  Conversation state saved to SQLite (per thread_id)
+```mermaid
+flowchart TD
+    A[User Question - Streamlit UI] --> B[LangGraph Agent - Gemini]
+    B -->|Direct answer| F[Response streamed to UI]
+    B -->|Needs retrieval| C[Retrieval Tool]
+    C --> D[Chroma Vector Store]
+    C --> E[Gemini Embeddings]
+    D --> F
+    E --> F
+    F --> G[Conversation state saved to SQLite per thread_id]
+```
 
 
 
@@ -41,5 +37,3 @@ User Question (Streamlit UI)
 | Document loading & chunking | LangChain (`PyPDFLoader`, `RecursiveCharacterTextSplitter`) |
 | Conversation persistence | LangGraph `SqliteSaver` |
 | Frontend | Streamlit |
-
-
